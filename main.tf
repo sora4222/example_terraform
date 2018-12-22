@@ -3,7 +3,7 @@ provider "aws" {
 }
 
 resource "aws_instance" "example" {
-  ami = "ami-40d26157"
+  ami = "ami-08589eca6dcc9b39c"
   instance_type = "t2.micro"
   tags{
       Name = "terraformed-ec2-instance"
