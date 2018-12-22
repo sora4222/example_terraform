@@ -8,5 +8,6 @@ resource "aws_instance" "example" {
   tags{
       Name = "terraformed-ec2-instance"
       Setup_by = "terraform"
+      key_name =  "nhung-quick"
   }
 }
