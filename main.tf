@@ -1,3 +1,7 @@
+provider "aws" {
+  region="ap-southeast-2"
+}
+
 resource "aws_instance" "web_server" {
   ami = "ami-07a3bd4944eb120a0"
   instance_type = "t2.micro"
