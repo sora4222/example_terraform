@@ -45,7 +45,7 @@ resource "aws_launch_configuration" "template" {
 
 resource "aws_autoscaling_group" "cluster" {
   launch_configuration="${aws_launch_configuration.template.id}"
-  availability_zones="${data.aws_availability_zones.all.names}"
+  availability_zones=["${data.aws_availability_zones.all.names}"]
   min_size=2
   max_size=5
 
