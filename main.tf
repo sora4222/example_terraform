@@ -26,7 +26,7 @@ resource "aws_security_group" "instance" {
 }
 
 resource "aws_launch_configuration" "template" {
-  image_id="ami-40d28157"
+  ami = "ami-07a3bd4944eb120a0"
   instance_type="t2.micro"
   security_groups= ["${aws_security_group.instance.id}"]
 
