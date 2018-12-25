@@ -55,6 +55,3 @@ resource "aws_autoscaling_group" "cluster" {
     propagate_at_launch=true
   }
 }
-output "ip_address" {
-  value = "${aws_launch_configuration.template.public_ip}"
-}
