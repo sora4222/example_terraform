@@ -10,7 +10,7 @@ resource "aws_instance" "web_server" {
   user_data = <<-EOF
                 #!/bin/bash
                 echo "Hello, World" > index.html
-                nohup busybox httpd -f -p 8080 &
+                nohup busybox httpd -f -p "${var.server_port}" &
                 EOF
   tags {
       Name="simple-web-server"
@@ -22,10 +22,18 @@ resource "aws_security_group" "instance" {
   name="terraform-web-server-security"
 
   ingress{
-      from_port = 8080
-      to_port = 8080
+      from_port = "${var.server_port}"
+      to_port = "${var.server_port}"
       protocol = "tcp"
       cidr_blocks = ["0.0.0.0/0"]
   }
 }
 
+variable "server_port" {
+  description = "The port the web server will use for HTTP requests"
+  default = 8080
+}
+
+output  "public_ip" {
+  value = "${aws_instance.web_server.public_ip}"
+}
